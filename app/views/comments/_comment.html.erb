@@ -1,0 +1,13 @@
+<div class="comment clearfix">
+  <div class="comment_content">
+	<% if comment.comment_review==true %>
+		<p class="comment_name"><strong><%= comment.name %></strong></p>
+		<p class="comment_body"><%= comment.body %></p>
+		<p class="comment_time"><%= time_ago_in_words(comment.created_at) %> Ago</p>
+	<% else %>
+		"WAit for approoval"
+    <% end %>
+  </div>
+
+
+</div>

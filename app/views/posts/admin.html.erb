@@ -1,0 +1,10 @@
+<% if current_user.role==1 %>
+<% @post.each do |post| %>
+<p><%=post.title %></p>
+<p><%= post.body %></p>
+    <%= link_to 'Approove',admin_approoved_articles_path( id: post.id),
+
+                class: "button",
+                data: { confirm: 'Are you sure?' } %>
+<% end %>
+<% end %>

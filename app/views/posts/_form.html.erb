@@ -1,0 +1,40 @@
+<div id="formpost" align="center">
+  <fieldset style="width: 500px;">
+  
+    <legend><h1>Add Post</h1></legend>
+
+    <%= form_for @post, url: posts_path, html: {class: 'form-horizontal'} do |f| %>
+      <% if @post.errors.any? %>
+        <div id="errorExplanation">
+
+            <h2><%= pluralize(@post.errors.count, 'error') %> prohibited this post from being saved:</h2>
+
+            <ul>
+                <% @post.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+              </ul>
+        </div>
+    <% end %>
+        <div class="control-group">
+            <%= f.label :title, class: 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :title, class: 'span4' %>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <%= f.label :content, class: 'control-label' %>
+            <div class="controls">
+                <%= f.text_area :body, rows: '7', class: 'input-block-level' %>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <%= f.submit "Add Post", :class => 'btn btn-success' %>
+            <%= link_to "Cancel", posts_path, :class => 'btn', :style => 'float:right;' %>
+        </div>
+    <% end %>
+</fieldset>
+
+</div>

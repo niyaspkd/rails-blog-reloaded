@@ -1,0 +1,11 @@
+<% @posts.each do |post| %>
+<% if post.flagarticle==true %>
+
+<div class="post_wrapper" align="center">
+<h2 class="title"><%= link_to post.title, post %></h2>
+<p class="date"><%= post.created_at.strftime("%B,%d,%Y")%></p>	
+<hr>
+</div>
+<% end %>
+
+<% end %>

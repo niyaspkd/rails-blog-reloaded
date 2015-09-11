@@ -1,0 +1,36 @@
+
+Owner id:<%= @post.user_id %>
+Logged in user id :<%= current_user.id %>
+<% if current_user.id.to_i==@post.user_id.to_i %>
+
+    <% @post.comments.each do |comment| %>
+
+
+        <% if comment.comment_review==false %>
+
+            <p><%=comment.name %>
+            <%=comment.body %></p>
+            <p>
+              <%= link_to 'Approove',approoved_post_path( id: comment.id),
+
+                  class: "button",
+                  data: { confirm: 'Are you sure?' } %>
+
+                <%= link_to 'Delete', [comment.post, comment],
+                               method: :delete,
+                               class: "button",
+                               data: { confirm: 'Are you sure?' } %>
+            </p>
+
+
+        <% end %>
+
+
+
+
+
+
+    </p>
+        <% end %>
+
+<% end %>

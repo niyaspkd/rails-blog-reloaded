@@ -1,0 +1,34 @@
+<div id="post_content" align="center">
+
+    <% if @post.flagarticle==true %>
+
+          <h3 style="color:darkred"><%= link_to 'Comments Waiting for approoval',author_post_path %></h3>
+
+
+
+          <h1 class= "title" style="font-size:20px;"><%= @post.title %><h1>
+            <p class= "date_and_author"> Submitted <%= time_ago_in_words(@post.created_at )%> ago
+
+	
+
+	 |      <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %></p>
+	        <p align="center">
+            <h3>viewed  <%= @post.count_view %> times</h3>
+            <h2><%= @post.body %></h2>
+            </p>
+    <% else%>
+            pending approval
+    <% end %>
+
+
+
+
+    <h3>Comments</h3>
+    total comments: <%= @post.comments.count %>
+    <%= render @post.comments %>
+ 
+    <h3>Add a comment:</h3>
+    <%= render 'comments/form'%>
+
+    </div>
+</div>
